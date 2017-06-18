@@ -16,7 +16,7 @@ class CombatantsController < ApplicationController
   def create
     @combatant = Combatant.new(combatant_params)
     if @combatant.save
-      redirect_to combatants_url, notice: "Nouveau warrior créé"
+      redirect_to combatants_url, notice: "Nouveau combattant créé"
     else
       render :new
     end
@@ -27,7 +27,7 @@ class CombatantsController < ApplicationController
 
   def update
     if @combatant.update(combatant_params)
-      redirect_to combatant_url(@combatant), notice: "Warrior modifié"
+      redirect_to combatant_url(@combatant), notice: "Combattant modifié"
     else
       render :edit
     end
@@ -35,7 +35,7 @@ class CombatantsController < ApplicationController
 
   def destroy
     @combatant.destroy
-    redirect_to combatants_url, alert: "Warrior supprimé"
+    redirect_to combatants_url, alert: "Combattant supprimé"
   end
 
   private

@@ -42,16 +42,21 @@
   flex: 1 1 auto;
 }
 
-.combatant-details p {
+.combatant-details h5{
+  font-weight: bold;
+  color: #999999;
+}
+
+.combatant-details a {
   font-weight: lighter;
   color: #999999;
   line-height: 28px;
   margin-bottom: 0;
 }
 
-.combatant-details h5{
-  font-weight: bold;
-  color: #999999;
+.combatant-details a:hover{
+  color: $blue;
+  text-decoration: none;
 }
 
 /* combatant image */
@@ -62,8 +67,8 @@
   height: 200px;
 }
 
-/* Upvote design */
-.combatant-upvote {
+/* id design */
+.combatant-id {
   padding-right: 20px;
   text-align: center;
   transition: all 0.15s ease;
@@ -87,9 +92,7 @@
   font-size: 17px;
   color: #999999;
 }
-.combatant-controls a:hover {
-  color: $blue !important;
-}
+
 .combatant-controls-hidden a {
   color: transparent;
   font-size: 15px;
@@ -103,15 +106,34 @@
   cursor: pointer;
 }
 
-.fighter {
-  background: #f7f7fa;
-}
-
-.combatant-upvote:hover {
+.combatant-id:hover {
   cursor: pointer;
 }
-.combatant:hover .combatant-upvote { transform: scale(1.2) }
+.combatant:hover .combatant-id { transform: scale(1.2) }
 .combatant:hover .combatant-controls-hidden a { color: #E6E6E6 }
-.combatant-upvote:hover .combatant-arrow-up { border-bottom: 9px solid #5898f1 }
+.combatant-id:hover .combatant-arrow-up { border-bottom: 9px solid #5898f1 }
 
+.combatant-description {
+  margin-top: 10px;
+  color: #999999;
+ }
 
+.combatant-description h2 {
+  color: black;
+ }
+
+.combatant-avatar {
+  background-size: cover !important;
+  background-color: #f7f7fa;
+ }
+
+.combatant-identity {
+  color: #fffff;
+}
+.combatant-identity p {
+  color: #5898f1;
+}
+
+.fight {
+  background: #f7f7fa;
+}

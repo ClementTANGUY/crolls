@@ -1,5 +1,5 @@
 <div class="combatant" data-item="<%= combatant.id %>">
-  <div class='combatant-upvote'>
+  <div class='combatant-id'>
     <div class='combatant-count'><%= combatant.id %></div>
   </div>
 
@@ -10,9 +10,22 @@
   <% end %>
 
   <div class='combatant-body'>
+    <h3><%= link_to combatant.name, combatant_path(combatant) %></h3>
+  </div>
 
-    <h3><%= link_to combatant.name %></h3>
-
+  <div class="combatant-details">
+    <h5>Ajouter :</h5>
+    <p>
+      <%= link_to do %>
+        Arme <i class="fa fa-bomb"></i>
+      <% end %><br>
+      <%= link_to do %>
+        Bouclier <i class="fa fa-shield"></i>
+      <% end %><br>
+      <%= link_to do %>
+        Regénération <i class="fa fa-magic"></i>
+      <% end %>
+    </p>
   </div>
 
   <ul class="list-inline combatant-controls">
@@ -31,13 +44,7 @@
   <script type="text/javascript">
     $(document).on('ready', function() {
 
-      // TODO: Récupérer les ids de 2 combattants grâce à 2 clicks (un autre click sur le même combattant annule sa sélection);
-      // Lancer le combats grâce à une boucle while (on considère que le 1er combttant porte le premier coup);
-      // while (fighter1.life > 0 || fighter2.life > 0) {
-      //  fighter1.life -= fighter2.attack;
-      //  fighter2.life -= fighter1.attack;
-      // }
-      // Donner le nom du gagant dans un message d'alerte avec ses points de vie restants
+      // TODO
 
     });
   </script>

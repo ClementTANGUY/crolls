@@ -1,2 +1,39 @@
-<h1>Combatants#show</h1>
-<p>Find me in app/views/combatants/show.html.erb</p>
+<div class="combatant-description container">
+
+  <p class="text-left">
+    <%= link_to "Modifier son profil", edit_combatant_path(@combatant), class: "btn btn-primary" %> <%= link_to "Supprimer ce combattant", combatant_path(@combatant), method: :delete, data: {confirm: 'Êtes-vous sûr de vouloir supprimer ce guerrier ?'}, class: "btn btn-danger" %>
+  </p>
+
+  <div class="combatant-avatar container text-center padded">
+    <div class="row">
+      <div class="col-xs-12">
+        <% if !@combatant.image_url.blank? %>
+          <%= image_tag @combatant.image_url, alt:"Combattant", class:"avatar-extra-large" %>
+        <% else %>
+          <%= image_tag "https://scontent-amt2-1.cdninstagram.com/t51.2885-15/s640x640/sh0.08/e35/c0.135.1080.1080/18299818_463781843955344_8661087945098264576_n.jpg", alt:"Combattant", class:"avatar-extra-large" %>
+        <% end %>
+
+        <h1 class="combatant-identity">
+        <%= @combatant.name %>
+        </h1>
+
+        <p class="combatant-identity">
+          VIE : <span class="label label-primary"><%= @combatant.life %></span>  points
+        </p>
+        <p class="combatant-identity">
+          ATTAQUE : <span class="label label-primary"><%= @combatant.attack %></span> points
+        </p>
+        <p class="combatant-identity">
+          EXPÉRIENCE : <span class="label label-primary"><%= @combatant.experience %></span> points
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <p>&nbsp</p>
+
+  <p>
+    <%= link_to "Retour aux combattants", combatants_path, class: "btn btn-default" %>
+  </p>
+
+</div>
