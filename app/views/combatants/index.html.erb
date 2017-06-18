@@ -1,0 +1,31 @@
+<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('<%= image_path "background.jpg" %>');">
+  <div class="banner-content">
+    <h1>CROLLS</h1>
+    <h2>L'ultime combat</h2>
+    <p>
+      À chaque nouvelle lune, les clans des terres brunes se mesurent lors de combats éclairs.<br>
+      Leur puissance est telle que les attaques échappent au commun des mortels...<br>
+      À vous de décider quels guerriers vont s'affronter
+    </p>
+    <a href="#warriors", class="btn btn-primary btn-lg">Entrez dans l'arène</a>
+  </div>
+</div>
+
+<br>
+
+<div class="container" >
+  <div class="container text-center padded" id="warriors", style="outline: none;">
+    <h3>Cliquez sur 2 profils pour les voir s'affronter</h3>
+  </div>
+
+  <%= link_to new_combatant_path do %>
+    <i class="fa fa-plus"></i> Créer un guerrier
+  <% end %>
+
+  <p>&nbsp</p>
+
+  <% @combatants.each do |combatant| %>
+    <%= render 'combatant', combatant: combatant %>
+  <% end %>
+
+</div>

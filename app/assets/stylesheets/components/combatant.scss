@@ -1,0 +1,117 @@
+.combatant {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  border-radius: 3px;
+  transition: all 0.15s ease;
+}
+
+/* Body design */
+.combatant-body {
+  flex: 1 1 auto;
+}
+.combatant-body h3 {
+  color: #999999;
+  font-weight: bold;
+  font-size: 23px;
+  margin-top: 0;
+}
+
+.combatant-body h5{
+  font-weight: bold;
+  color: #FF642E;
+}
+
+.combatant-body p {
+  font-weight: lighter;
+  color: #999999;
+  line-height: 28px;
+  margin-bottom: 0;
+}
+
+.combatant-body a {
+  color: #999999;
+}
+
+.combatant-body a:hover{
+  color: $blue;
+  text-decoration: none;
+}
+
+.combatant-details {
+  flex: 1 1 auto;
+}
+
+.combatant-details p {
+  font-weight: lighter;
+  color: #999999;
+  line-height: 28px;
+  margin-bottom: 0;
+}
+
+.combatant-details h5{
+  font-weight: bold;
+  color: #999999;
+}
+
+/* combatant image */
+.combatant-image {
+  border-radius: 10px;
+  margin-right: 20px;
+  width: 200px;
+  height: 200px;
+}
+
+/* Upvote design */
+.combatant-upvote {
+  padding-right: 20px;
+  text-align: center;
+  transition: all 0.15s ease;
+  font-weight: bold;
+  font-size: 13px;
+  line-height: 20px;
+}
+.combatant-count {
+  margin: 2px 0 0;
+}
+
+/* Controls design */
+.combatant-controls {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 0px;
+}
+.combatant-controls a {
+  padding: 0 20px;
+  font-size: 17px;
+  color: #999999;
+}
+.combatant-controls a:hover {
+  color: $blue !important;
+}
+.combatant-controls-hidden a {
+  color: transparent;
+  font-size: 15px;
+  transition: all 0.15s ease;
+  border-color: transparent;
+}
+
+/* Hover effects */
+.combatant:hover {
+  background: #f7f7fa;
+  cursor: pointer;
+}
+
+.fighter {
+  background: #f7f7fa;
+}
+
+.combatant-upvote:hover {
+  cursor: pointer;
+}
+.combatant:hover .combatant-upvote { transform: scale(1.2) }
+.combatant:hover .combatant-controls-hidden a { color: #E6E6E6 }
+.combatant-upvote:hover .combatant-arrow-up { border-bottom: 9px solid #5898f1 }
+
+

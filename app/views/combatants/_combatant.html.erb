@@ -1,0 +1,44 @@
+<div class="combatant" data-item="<%= combatant.id %>">
+  <div class='combatant-upvote'>
+    <div class='combatant-count'><%= combatant.id %></div>
+  </div>
+
+  <% if !combatant.image_url.blank? %>
+    <%= image_tag combatant.image_url, alt:"Combattant", class:"combatant-image hidden-xs" %>
+  <% else %>
+    <%= image_tag "https://scontent-amt2-1.cdninstagram.com/t51.2885-15/s640x640/sh0.08/e35/c0.135.1080.1080/18299818_463781843955344_8661087945098264576_n.jpg", alt:"Combattant", class:"combatant-image hidden-xs" %>
+  <% end %>
+
+  <div class='combatant-body'>
+
+    <h3><%= link_to combatant.name %></h3>
+
+  </div>
+
+  <ul class="list-inline combatant-controls">
+    <li>
+      <a><i class="fa fa-heart fa-2x"></i></a><br>
+      <p><%= combatant.life %></p>
+    </li>
+    <li>
+      <a><i class="fa fa-bolt fa-2x"></i></a><br>
+      <p><%= combatant.attack %></p>
+    </li>
+  </ul>
+</div>
+
+<% content_for(:after_js) do %>
+  <script type="text/javascript">
+    $(document).on('ready', function() {
+
+      // TODO: Récupérer les ids de 2 combattants grâce à 2 clicks (un autre click sur le même combattant annule sa sélection);
+      // Lancer le combats grâce à une boucle while (on considère que le 1er combttant porte le premier coup);
+      // while (fighter1.life > 0 || fighter2.life > 0) {
+      //  fighter1.life -= fighter2.attack;
+      //  fighter2.life -= fighter1.attack;
+      // }
+      // Donner le nom du gagant dans un message d'alerte avec ses points de vie restants
+
+    });
+  </script>
+<% end %>
