@@ -14,18 +14,9 @@
   </div>
 
   <div class="combatant-details">
-    <h5>Ajouter :</h5>
-    <p>
-      <%= link_to do %>
-        Arme <i class="fa fa-bomb"></i>
-      <% end %><br>
-      <%= link_to do %>
-        Bouclier <i class="fa fa-shield"></i>
-      <% end %><br>
-      <%= link_to do %>
-        Regénération <i class="fa fa-magic"></i>
-      <% end %>
-    </p>
+    <h5>
+      <%= button_to "VS", fighters_path(combatant_id: combatant.id), remote: true, method: :post, class: "btn btn-primary" %>
+    </h5>
   </div>
 
   <ul class="list-inline combatant-controls">
@@ -39,13 +30,3 @@
     </li>
   </ul>
 </div>
-
-<% content_for(:after_js) do %>
-  <script type="text/javascript">
-    $(document).on('ready', function() {
-
-      // TODO
-
-    });
-  </script>
-<% end %>

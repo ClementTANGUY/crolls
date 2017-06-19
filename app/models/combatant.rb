@@ -1,5 +1,7 @@
 class Combatant < ApplicationRecord
 
+  has_many :fighters
+
   validates :name, presence: true
   validates :name, uniqueness: true
   validates :life, presence: true, numericality: { only_integer: true, greater_or_equal_to: 15, less_than_or_equal_to: 20 }

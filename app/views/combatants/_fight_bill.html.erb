@@ -1,0 +1,13 @@
+<% current_fight.fighters.each do |fighter| %>
+  <h3>
+    <%= fighter.combatant.name %>
+    <small>
+      <%= link_to "quitter l'arène", fighter, data: { confirm: "Êtes-vous sûr sortir '#{fighter.combatant.name}' de l'arène ?" }, method: :delete, remote: true %>
+    </small>
+  </h3>
+<% end %>
+<br>
+<% if current_fight.fighters.size == 2 %>
+  <%= link_to "Lancer le combat", fights_path, method: :post, class:"btn btn-primary btn-lg" %>
+<% end %>
+

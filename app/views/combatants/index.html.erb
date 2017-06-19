@@ -11,12 +11,17 @@
   </div>
 </div>
 
-<br>
-
-<div class="container" >
-  <div class="container text-center padded" id="warriors", style="outline: none;">
-    <h3>Cliquez sur 2 profils pour les voir s'affronter</h3>
+<div class="flash"></div>
+<div class="container padded">
+  <div class="text-center" id="warriors", style="outline: none;">
+    <h3 class="text-center">Faîtes entrer un combattant dans l'arène, cliquez sur <span class="btn btn-primary">VS</span></h3>
   </div>
+  <br>
+  <div class="text-center fight-bill"">
+    <%= render "fight_bill" %>
+  </div>
+
+  <br>
 
   <%= link_to new_combatant_path do %>
     <i class="fa fa-plus"></i> Créer un guerrier

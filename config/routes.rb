@@ -5,4 +5,8 @@ Rails.application.routes.draw do
 
   resources :combatants
 
+  resources :fighters, only: [ :create, :destroy ]
+
+  resources :fights, only: [:show, :new, :create]
+
 end
