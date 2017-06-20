@@ -7,6 +7,6 @@ Rails.application.routes.draw do
 
   resources :fighters, only: [ :create, :destroy ]
 
-  resources :fights, only: [:show, :new, :create]
+  resources :fights, only: [:show, :create]
 
 end

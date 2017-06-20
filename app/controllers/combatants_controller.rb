@@ -3,7 +3,7 @@ class CombatantsController < ApplicationController
   before_action :set_combatant, only: [:show, :edit, :update, :destroy]
 
   def index
-    @combatants = Combatant.all
+    @combatants = Combatant.order(id: :asc)
   end
 
   def show
