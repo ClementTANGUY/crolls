@@ -2,7 +2,20 @@ class FightsController < ApplicationController
 
   def show
     @fight= Fight.find(params[:id])
-    @fighters = @fight.fighters
+    fighter1 = @fight.fighters.first
+    fighter2 = @fight.fighters.second
+    combatant1 = fighter1.combatant
+    combatant2 = fighter2.combatant
+    if combatant1.life > combatant2.life
+      @winner = combatant1
+      @looser = combatant2
+    elsif combatant1.life < combatant2.life
+      @winner = combatant2
+      @looser = combatant1
+    elsif combatant1.life == combatant2.life
+      @winner1 = combatant1
+      @winner2 = combatant2
+    end
   end
 
   def create

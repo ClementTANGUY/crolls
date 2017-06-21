@@ -5,7 +5,13 @@ Rails.application.routes.draw do
 
   resources :combatants
 
-  resources :fighters, only: [ :create, :destroy ]
+  resources :fighters, only: [ :create, :destroy ] do
+    member do
+      post 'add_weapon'
+      post 'add_shield'
+      post 'add_spell'
+    end
+  end
 
   resources :fights, only: [:show, :create]
 

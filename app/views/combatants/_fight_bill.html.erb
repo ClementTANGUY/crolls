@@ -1,13 +1,57 @@
 <% current_fight.fighters.each do |fighter| %>
-  <h3>
-    <%= fighter.combatant.name %>
-    <small>
-      <%= link_to "retirer de l'arène", fighter, data: { confirm: "Êtes-vous sûr de sortir '#{fighter.combatant.name}' de l'arène ?" }, method: :delete, remote: true %>
-    </small>
-  </h3>
-<% end %>
-<br>
-<% if current_fight.fighters.size == 2 %>
-  <%= link_to "Démarre le combat", fights_path, method: :post, class:"btn btn-primary btn-lg" %>
+
+  <div class="col-xs-12 col-md-6">
+    <div class="fighter_card">
+      <div class="fighter_card-category">
+        Expérience <span class="label label-primary"><%= fighter.combatant.experience %></span><br>
+      </div>
+
+      <div class="fighter_card-description">
+        <h2><%= fighter.combatant.name %></h2>
+        <p>
+          Vie <span class="label label-primary"><%= fighter.combatant.life %></span>
+        </p>
+      </div>
+      <div class="fighter_card-attack">
+        <p>
+          Attaque <span class="label label-danger"><%= fighter.combatant.attack %></span>
+        </p>
+      </div>
+
+      <% if !fighter.combatant.image_url.blank? %>
+        <%= image_tag fighter.combatant.image_url, alt:"Combattant", class:"fighter_card-combatant avatar-large" %>
+      <% else %>
+        <%= image_tag "https://scontent-amt2-1.cdninstagram.com/t51.2885-15/s640x640/sh0.08/e35/c0.135.1080.1080/18299818_463781843955344_8661087945098264576_n.jpg", alt:"Combattant", class:"fighter_card-combatant avatar-large"%>
+      <% end %>
+
+    </div>
+    <div id="add-equipment">
+      <p>
+        <%= link_to add_weapon_fighter_path(fighter), method: :post, remote: true do %>
+          Ajoute une arme <i class="fa fa-bomb"></i>
+        <% end %>
+        <%= link_to add_shield_fighter_path(fighter), method: :post, remote: true do %>
+          Ajoute un Bouclier <i class="fa fa-shield"></i>
+        <% end %>
+      </p>
+      <p>
+        <%= link_to add_spell_fighter_path(fighter), method: :post, remote: true do %>
+          Régénère les pts de vie <i class="fa fa-magic"></i>
+        <% end %>
+      </p>
+    </div>
+    <p>
+      <%= link_to "Retire de l'arène", fighter, data: { confirm: "Êtes-vous sûr de sortir '#{fighter.combatant.name}' de l'arène ?" }, method: :delete, remote: true %>
+    </p>
+
+  </div>
+
 <% end %>
 
+<p>&nbsp</p>
+
+<div class="run-fight">
+  <% if current_fight.fighters.size == 2 %>
+    <%= link_to "Démarre le combat", fights_path, method: :post, class:"btn btn-danger btn-lg" %>
+  <% end %>
+</div>

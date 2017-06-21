@@ -1,45 +1,56 @@
-<div class="container padded text-center">
-  <% if @fighters.size == 1 %>
-
+<div class="padded text-center fight">
+  <% if !@winner1 && !@winner2 %>
     <h1>
-      AND THE WINNER IS...<br>
-      <br>
       <i class="fa fa-star-o fa-2x"></i><i class="fa fa-star-o fa-2x"></i><i class="fa fa-star-o fa-2x"></i><i class="fa fa-star-o fa-2x"></i>
+      <p>&nbsp</p>
+      AND THE WINNER IS...<br>
     </h1>
-    <br>
     <h1>
-      <% @fighters.each do |fighter| %>
-      <%= fighter.combatant.name %> <br>
+      <i class="fa fa-bolt fa-2x"></i>
+      <%= @winner.name %>
+      <i class="fa fa-bolt fa-2x"></i>
     </h1>
     <br>
     <p>
-      Après un rude combat, il ne lui reste plus que <span class="btn btn-warning"><%= fighter.combatant.life%></span> points de vie...<br>
-      Malgré cela, <%= fighter.combatant.name %> remporte <span class="btn btn-success">2</span> points d'expérience. <br>
-      Pense à regénérer les combattants avant leur prochain combat <br>
+      Points de vie restants : <span class="btn btn-warning"><%= @winner.life%></span><br>
+      <%= @winner.name %> remporte <span class="btn btn-primary">2</span> points d'expérience <br>
     </p>
-    <% end %>
-
+    <h2>
+      <%= @looser.name %> perd son combat
+    </h2>
+    <p>
+      Points de vie restants : <span class="btn btn-warning"><%= @looser.life%></span><br>
+    </p>
+    <br>
+    <p>
+     Pense à régénérer les combattants avant leur prochain combat... <br>
+    </p>
   <% else %>
-
     <h1>
-      EX AEQUO !
+      <i class="fa fa-star-o fa-2x"></i><i class="fa fa-star-o fa-2x"></i><i class="fa fa-star-o fa-2x"></i><i class="fa fa-star-o fa-2x"></i>
+      <p>&nbsp</p>
+      EX AEQUO...<br>
     </h1>
-    <br>
     <h1>
-      <% @fighters.each do |fighter| %>
-      <%= fighter.combatant.name %> <br>
+      <i class="fa fa-bolt fa-2x"></i>
+      <%= @winner1.name %> &
+      <%= @winner2.name %>
+      <i class="fa fa-bolt fa-2x"></i>
     </h1>
     <br>
     <p>
-
+      <%= @winner1.name %> remporte <span class="btn btn-primary">2</span> points d'expérience <br>
+      Points de vie restants : <span class="btn btn-warning"><%= @winner1.life%></span><br>
     </p>
-    <% end %>
+    <p>
+      <%= @winner2.name %> remporte aussi <span class="btn btn-primary">2</span> points d'expérience <br>
+      Points de vie restants : <span class="btn btn-warning"><%= @winner1.life%></span><br>
+    </p>
 
   <% end %>
-   <br>
-   <p>
+    <p>
      <%= link_to "Retourne à l'arène", combatants_path, class: "btn btn-primary" %>
-   </p>
+    </p>
 </div>
 
 

@@ -11,17 +11,25 @@
   </div>
 </div>
 
-<div class="flash"></div>
 <div class="container padded">
-  <div class="text-center" id="warriors", style="outline: none;">
-    <h3 class="text-center">Fais combattre 2 guerriers, clique sur <span class="btn btn-primary">VS</span></h3>
-  </div>
-  <br>
-  <div class="text-center fight-bill"">
-    <%= render "fight_bill" %>
+  <div class="text-center">
+
+    <div class="flash" id="warriors", style="outline: none;"></div>
+
+    <h3 class="text-center">
+      Fais combattre 2 guerriers, clique sur <span class="btn btn-primary">VS</span>
+    </h3>
   </div>
 
-  <br>
+  <div class="text-center fight-bill"">
+    <div class="row">
+      <%= render "fight_bill" %>
+     </div>
+  </div>
+
+</div>
+
+<div class="container">
 
   <%= link_to new_combatant_path do %>
     <i class="fa fa-plus"></i> Créer un guerrier
@@ -30,7 +38,9 @@
   <p>&nbsp</p>
 
   <% @combatants.each do |combatant| %>
-    <%= render 'combatant', combatant: combatant %>
+    <div class="combatant-card-<%= combatant.id %>">
+      <%= render 'combatant', combatant: combatant %>
+    </div>
   <% end %>
 
 </div>

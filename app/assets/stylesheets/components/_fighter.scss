@@ -1,0 +1,41 @@
+.fighter_card {
+  height: 175px;
+  background-size: cover !important;
+  color: #999999;
+  background-color: #f7f7fa;
+  margin-top: 10px;
+  position: relative;
+}
+.fighter_card-combatant {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+.fighter_card-category {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 14px;
+  line-height: 20px;
+}
+.fighter_card-description {
+  position: absolute;
+  bottom: 5px;
+  left: 10px;
+}
+.fighter_card-description h2 {
+  font-size: 24px;
+}
+.fighter_card-description p {
+  font-size: 14px;
+}
+
+.fighter_card-attack {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}
+
+.fighter_card-attack p {
+  font-size: 14px;
+}

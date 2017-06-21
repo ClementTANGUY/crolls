@@ -25,14 +25,16 @@ class Fight < ApplicationRecord
       combatant2.life -= combatant1.attack
       combatant1.life -= combatant2.attack
     end
+    if combatant1.life > combatant2.life
+      combatant1.experience += 2
+    elsif combatant1.life < combatant2.life
+      combatant2.experience += 2
+    elsif combatant1.life == combatant2.life
+      combatant1.experience += 2
+      combatant2.experience += 2
+    end
     combatant1.save
     combatant2.save
-    if combatant1.life > combatant2.life
-      fighter2.destroy
-    elsif combatant1.life < combatant2.life
-      fighter1.destroy
-    else
-    end
   end
 
 end
