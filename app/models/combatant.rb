@@ -1,11 +1,10 @@
 class Combatant < ApplicationRecord
 
-  include ActiveModel::Dirty
-
-  # define_attribute_methods :life
-
-
   has_many :fighters
+
+  # before_update :reload_life, if: :life_changed?
+  # before_update :set_previous_life, if: :life_changed?
+  # before_update :set_previous_attack, if: :attack_changed?
 
   validates :name, presence: true
   validates :name, uniqueness: true
@@ -20,29 +19,16 @@ class Combatant < ApplicationRecord
     message: 'doit être une url vers une image GIF, JPG ou PNG'
   }
 
-  # def initialize
-  #   @life = life
+  # def reload_life
+  #   write_attribute(:first_life, reload!)
   # end
 
-  # def life=(val)
-  #   life_will_change! unless val == @life
-  #   @life = val
+  # def set_previous_life
+  #   write_attribute(:previous_life, life_was)
   # end
 
-  # def save
-  #   # do persistence work
-
-  #   changes_applied
-  # end
-
-  # def reload!
-  #   # get the values from the persistence layer
-
-  #   clear_changes_information
-  # end
-
-  # def rollback!
-  #   restore_attributes
+  # def set_previous_attack
+  #   write_attribute(:previous_attack, attack_was)
   # end
 
 end

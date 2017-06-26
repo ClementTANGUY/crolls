@@ -9,11 +9,14 @@ class FightersController < ApplicationController
     @fighter = @fight.add_combatant(combatant)
     respond_to do |format|
       if !@fighter.nil? && @fighter.save
-        format.html { redirect_back fallback_location: combatants_url, notice: "Combattant prêt au combat !" }
-        format.js { flash.now[:notice] = "Combattant prêt au combat !" }
+        format.html { redirect_back fallback_location: combatants_url, notice: "Combattant envoyé dans l'arène !" }
+        format.js { flash.now[:notice] = "Combattant envoyé dans l'arène !" }
+      elsif @fight.fighters.size == 2
+        format.html { redirect_back fallback_location: combatants_url, alert: "2 Combattants déjà parés au combat !" }
+        format.js { flash.now[:alert] = "2 Combattants déjà parés au combat !" }
       else
-        format.html { redirect_back fallback_location: combatants_url, alert: "Combattant(s) parés au combat !" }
-        format.js { flash.now[:alert] = "Combattant(s) parés au combat !" }
+        format.html { redirect_back fallback_location: combatants_url, alert: "Combattant déjà dans l'arène !" }
+        format.js { flash.now[:alert] = "Combattant déjà dans l'arène !" }
       end
     end
     @fight.save
@@ -23,13 +26,10 @@ class FightersController < ApplicationController
   def add_weapon
     @combatant = @fighter.combatant
     respond_to do |format|
-      if @combatant.attack <= 3
+      if @combatant.attack < 3
         @combatant.update_attribute(:attack, @combatant.attack += 1)
-        format.html { redirect_back fallback_location: combatants_url, notice: "Cool, 1 points d'attaque en plus !" }
-        format.js { flash.now[:notice] = "Cool, 1 points d'attaque en plus !" }
-      else
-        format.html { redirect_back fallback_location: combatants_url, alert: "Au max en attaque !"  }
-        format.js { flash.now[:alert] = "Au max en attaque !" }
+        format.html { redirect_back fallback_location: combatants_url, notice: "Cool, #{@combatant.name} gagne 1 points d'attaque !" }
+        format.js { flash.now[:notice] = "Cool, #{@combatant.name} gagne 1 points d'attaque !" }
       end
     end
   end
@@ -37,22 +37,24 @@ class FightersController < ApplicationController
   def add_shield
     @combatant = @fighter.combatant
     respond_to do |format|
-      if @combatant.life <= 15
+      if @combatant.life >= 5 && @combatant.life < 15
         @combatant.update_attribute(:life, @combatant.life += 5)
-        format.html { redirect_back fallback_location: combatants_url, notice: "Cool, 5 points de vie en plus !" }
-        format.js { flash.now[:notice] = "Cool, 5 points de vie en plus !" }
-      else
-        @combatant.update_attribute(:life, @combatant.life += (20 - @combatant.life))
-        format.html { redirect_back fallback_location: combatants_url, alert: "Au max en points de vie !" }
-        format.js { flash.now[:alert] = "Au max en points de vie !" }
+        format.html { redirect_back fallback_location: combatants_url, notice: "Cool, #{@combatant.name} gagne 5 points de vie !" }
+        format.js { flash.now[:notice] = "Cool, #{@combatant.name} gagne 5 points de vie !" }
       end
     end
   end
 
-  # def add_spell
-  #   @combatant = @fighter.combatant
-
-  # end
+  def add_spell
+    @combatant = @fighter.combatant
+    respond_to do |format|
+      if @combatant.life < 5
+        @combatant.update_attribute(:life, 18)
+        format.html { redirect_back fallback_location: combatants_url, notice: "Cool, #{@combatant.name} se refait une santé !" }
+        format.js { flash.now[:notice] = "Cool, #{@combatant.name} se refait une santé !" }
+      end
+    end
+  end
 
   def destroy
     respond_to do |format|

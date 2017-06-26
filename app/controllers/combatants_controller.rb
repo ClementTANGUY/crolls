@@ -45,7 +45,7 @@ class CombatantsController < ApplicationController
   end
 
   def combatant_params
-    params.require(:combatant).permit(:name, :life, :attack, :resistance, :experience, :image_url)
+    params.require(:combatant).permit(:name, :life, :attack, :experience, :image_url)
   end
 
 end

@@ -21,7 +21,7 @@ class Fight < ApplicationRecord
     fighter2 = fighters.second
     combatant1 = fighter1.combatant
     combatant2 = fighter2.combatant
-    while (combatant1.life >= combatant2.attack) && (combatant2.life >= combatant1.attack)
+    while (combatant1.life > combatant2.attack) && (combatant2.life > combatant1.attack)
       combatant2.life -= combatant1.attack
       combatant1.life -= combatant2.attack
     end
